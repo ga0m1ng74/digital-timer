@@ -1,7 +1,10 @@
 import { useEffect, useState, useMemo } from 'react'
+import { Switch } from 'antd';
+import NumberDisplay from './components/NumberDisplay'
+import {ClockCircleOutlined,LoadingOutlined} from '@ant-design/icons'
 import './App.css'
 import dayjs from 'dayjs'
-import NumberDisplay from './components/NumberDisplay'
+
 
 const RandomNumber = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1) + min)
@@ -28,11 +31,16 @@ function App() {
     }, 2000)
   }, [])
 
+  const onChange = (checked: boolean) => {
+    setDisplay(!display)
+  };
+
   return (
     <div className="App">
-      <button onClick={() => {
-        setDisplay(!display)
-      }}>switch</button>
+      <Switch checkedChildren={<ClockCircleOutlined />}
+      unCheckedChildren={<LoadingOutlined />}
+      defaultChecked onChange={onChange} 
+      className='switchBtn'/>
       <NumberDisplay numberString={display?timeString:numberString} />
     </div>
   )

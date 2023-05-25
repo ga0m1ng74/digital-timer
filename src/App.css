@@ -10,6 +10,14 @@
   height: 100vh;
   background-color: #ddd;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+.switchBtn{
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  cursor: pointer;
 }
